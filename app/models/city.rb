@@ -2,5 +2,7 @@ class City < ActiveRecord::Base
   has_many :neighborhoods
   has_many :listings, :through => :neighborhoods
 
-end
+  include InstanceHelper
+  extend ClassHelper
 
+end
