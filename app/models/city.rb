@@ -9,36 +9,24 @@ class City < ActiveRecord::Base
   end
 
   def self.highest_ratio_res_to_listings
-    max_city = nil
-    max = 0
-    self.all.each do |city|
+    self.all.max_by do |city|
       listing_count = city.listings.count
       reservation_count = 0
       city.listings.each do |listing|
         reservation_count += listing.reservations.count
       end
-      if reservation_count.to_f/listing_count.to_f > max
-        max_city = city
-        max = reservation_count.to_f/listing_count.to_f
-      end
+      reservation_count.to_f/listing_count.to_f
     end
-    max_city
   end
 
   def self.most_res
-    max_city = nil
-    max = 0
-    self.all.each do |city|
+    self.all.max_by do |city|
       reservation_count = 0
       city.listings.each do |listing|
         reservation_count += listing.reservations.count
       end
-      if reservation_count > max
-        max_city = city
-        max = reservation_count
-      end
+      reservation_count
     end
-    max_city
   end
 
 
