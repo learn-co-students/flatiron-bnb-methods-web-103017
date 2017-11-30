@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   #has_many :hosts, :foreign_key => 'host_id', through: :listings, :class_name => "User"
 
   def hosts
-    self.reservations.collect do |reservation|
+    self.trips.collect do |reservation|
       reservation.listing.host
     end.uniq
   end
