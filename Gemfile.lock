@@ -134,6 +134,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (12.3.0)
     rdoc (4.3.0)
+    require_all (1.4.0)
     rspec-core (3.7.0)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -207,6 +208,7 @@ DEPENDENCIES
   pry
   rack_session_access
   rails (= 4.2)
+  require_all
   rspec-rails
   sass-rails (= 4.0.2)
   sdoc (~> 0.4.0)
