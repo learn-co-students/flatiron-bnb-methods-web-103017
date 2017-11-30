@@ -11,4 +11,11 @@ class User < ActiveRecord::Base
       reservation.listing.host
     end.uniq
   end
+
+  def host_reviews
+    self.reservations.collect do |reservation|
+      reservation.review
+    end
+  end
+  
 end
