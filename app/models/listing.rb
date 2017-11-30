@@ -5,10 +5,19 @@ class Listing < ActiveRecord::Base
   has_many :reviews, :through => :reservations
   has_many :guests, :class_name => "User", :through => :reservations
 
+  validates :address, presence: true
+  validates :listing_type, presence: true
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :price, presence: true
+  validates :neighborhood_id, presence: true
+
   def available?(checkin, checkout)
-    self.reservations.find do |reservation|
-      reservation.checkin < checkout && reservation.checkout > checkin
+    available = true
+    self.reservations.each do |reservation|
+      available = false if (reservation.checkin < checkout && reservation.checkout > checkin)
     end
+    available
   end
 
 
