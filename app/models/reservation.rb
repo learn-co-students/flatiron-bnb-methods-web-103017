@@ -35,6 +35,7 @@ class Reservation < ActiveRecord::Base
   end
 
   def available_validate
+    # byebug
     Reservation.where(listing_id: listing.id).where.not(id: id).each do |reservation|
       booked_dates = reservation.checkin..reservation.checkout
       if booked_dates === checkin || booked_dates === checkout

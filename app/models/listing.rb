@@ -12,7 +12,7 @@ class Listing < ActiveRecord::Base
 
   # Returns true if all of the reservations of a given listing fall out side of the parameter dates
   def available(start_date, end_date)
-    self.reservations.select {| reservation| reservation.available(start_date, end_date)} == self.reservations
+    reservations.select {| reservation| reservation.available(start_date, end_date)} == reservations
   end
 
   def average_review_rating
